@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional AI Developer Portfolio Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  /* --- DEFAULT THEME (FORCED TO FINAL DARK MODE) --- */
+  :root {
+    /* Core: Dark navy background with slightly darker cards */
+    --background: 225 15% 15%; 
+    --foreground: 210 40% 98%;
+
+    /* Card */
+    --card: 225 15% 10%;
+    --card-foreground: 210 40% 98%;
+
+    /* Popover */
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary (Buttons, Gradients, Decorative Circles) */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Accent (Gradients, Decorative Circles) */
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Secondary (For visible toggle button) */
+    --secondary: 217.2 32.6% 25.5%; 
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Border (For visible toggle button), Input, Ring */
+    --border: 217.2 32.6% 30.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem; /* Rounded corners for cards */
+
+    /* Sidebar (Kept for compatibility) */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* .dark class uses the same variables to ensure theme toggle doesn't break it */
+  .dark {
+    --background: 225 15% 15%; 
+    --foreground: 210 40% 98%;
+    --card: 225 15% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 217.2 32.6% 25.5%; 
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 30.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+/* --- CUSTOM UTILITY CLASSES --- */
+@layer components {
+  /* For gradient headings and keywords */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  /* For the profile image glow in the hero section */
+  .image-glow {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.5), 0 0 70px hsl(var(--accent) / 0.3);
+  }
+
+  /* NEW: For cards with decorative glowing circles */
+  .decorative-card {
+    @apply relative overflow-hidden bg-card p-6 rounded-lg; /* Ensures style is contained */
+  }
+  .decorative-card::before {
+    content: '';
+    @apply absolute -top-8 -left-8 w-32 h-32;
+    background-image: radial-gradient(circle, hsl(var(--primary) / 0.15), transparent 70%);
+    filter: blur(24px);
+  }
+  .decorative-card::after {
+    content: '';
+    @apply absolute -bottom-8 -right-8 w-32 h-32;
+    background-image: radial-gradient(circle, hsl(var(--accent) / 0.15), transparent 70%);
+    filter: blur(24px);
+  }
+}

@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/sampavi-ai-navigator/', // <-- ADD THIS LINE
+  base: '/',   // 👈 important for username.github.io sites
   server: {
     host: "::",
     port: 8080,
